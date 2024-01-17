@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
@@ -19,5 +20,21 @@ const config: StorybookConfig = {
     docs: {
         autodocs: 'tag',
     },
+    webpackFinal: async (config) => {
+        config.resolve = {
+          ...config.resolve,
+          alias: {
+            ...config?.resolve?.alias,
+            assets: path.resolve(__dirname, "../src/assets"),
+            components: path.resolve(__dirname, "../src/components"),
+            constants: path.resolve(__dirname, "../src/constants"),
+            hooks: path.resolve(__dirname, "../src/hooks"),
+            utils: path.resolve(__dirname, "../src/utils"),
+          },
+        };
+
+        return config;
+    },
 };
+
 export default config;

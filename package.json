@@ -29,13 +29,15 @@
         "src/**/*.{tsx,ts}": "eslint"
     },
     "resolutions": {
-        "jackspeak": "2.1.1"
+        "jackspeak": "2.1.1",
+        "styled-components": "^5"
     },
     "devDependencies": {
         "@babel/cli": "^7.23.4",
         "@babel/core": "^7.23.7",
         "@babel/preset-env": "^7.23.8",
         "@babel/preset-typescript": "^7.23.3",
+        "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
         "@rollup/plugin-commonjs": "^25.0.7",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
@@ -77,11 +79,13 @@
     },
     "peerDependencies": {
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "styled-components": "^6.1.8"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^2.0.1",
         "husky": "^8.0.3",
-        "react-redux": "^9.1.0"
+        "react-redux": "^9.1.0",
+        "styled-components": "^6.1.8"
     }
 }

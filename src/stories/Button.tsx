@@ -1,6 +1,6 @@
 import React from 'react';
+
 import './button.css';
-import calendar from '../assets/calendar.svg';
 
 interface ButtonProps {
     /**
@@ -38,7 +38,6 @@ export const Button = ({
     const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
     return (
         <div>
-            <img src={calendar} alt="asd" />
             <button
                 type="button"
                 className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}

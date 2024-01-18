@@ -20,5 +20,11 @@ export default {
             sourcemap: true,
         },
     ],
-    plugins: [peerDepsExternal(), resolve(), commonjs(), typescript(), terser()],
+    plugins: [
+        peerDepsExternal(),
+        resolve(),
+        commonjs(),
+        typescript({ tsconfig: './tsconfig.json' }),
+        terser(),
+    ],
 };

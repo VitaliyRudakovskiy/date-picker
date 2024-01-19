@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Button } from './Button';
-
 import './header.css';
+
+import { Button } from './Button';
 
 interface User {
     name: string;

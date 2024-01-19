@@ -9,3 +9,18 @@ export const DAYS_OF_WEEK: ICodes = {
     Saturday: 'Sa',
     Sunday: 'Su',
 };
+
+export enum MONTHS {
+    January,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December,
+}

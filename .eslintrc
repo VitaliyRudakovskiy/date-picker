@@ -5,7 +5,9 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "react",
+        "@typescript-eslint",
+        "simple-import-sort"
     ],
     "extends": [
         "eslint:recommended",
@@ -14,12 +16,31 @@
     "rules": {
         "@typescript-eslint/no-unused-vars": "error",
         "@typescript-eslint/consistent-type-definitions": [
-        "error",
-        "interface"
+            "error",
+            "interface"
         ]
     },
     "env": {
         "browser": true,
         "es2021": true
-    }
+    },
+    "overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"rules": {
+				"simple-import-sort/imports": [
+					"error",
+					{
+						"groups": [
+							["^react", "^@?\\w"],
+							["^(@|components)(/.*|$)"],
+							["^\\u0000"],
+							["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+							["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
+						]
+					}
+				]
+			}
+		}
+	]
 }

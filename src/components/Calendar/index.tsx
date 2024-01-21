@@ -5,7 +5,7 @@ import withTheme from '@hoc/withTheme';
 import store from '@store/store';
 
 import DaysGridContainer from './DaysGridContainer';
-import DaysOfWeek from './DaysOfWeek';
+import DaysOfWeek from './DaysHeader';
 import MonthSlider from './MonthSlider';
 import { CalendarWrapper } from './styled';
 

@@ -6,7 +6,8 @@ const now = new Date();
 
 const initialState: IInitialState = {
     firstDayOfWeek: 'Monday',
-    selectedDate: now,
+    today: now,
+    selectedDay: now,
     selectedMonth: now.getMonth(),
     selectedYear: now.getFullYear(),
 };
@@ -18,8 +19,11 @@ const calendarSlice = createSlice({
         setFirstDayOfWeek: (state, action: PayloadAction<'Monday' | 'Sunday'>) => {
             state.firstDayOfWeek = action.payload;
         },
-        setSelectedDate: (state, action: PayloadAction<Date>) => {
-            state.selectedDate = action.payload;
+        setToday: (state, action: PayloadAction<Date>) => {
+            state.today = action.payload;
+        },
+        setSelectedDay: (state, action: PayloadAction<Date>) => {
+            state.selectedDay = action.payload;
         },
         setSelectedMonth: (state, action: PayloadAction<number>) => {
             state.selectedMonth = action.payload;
@@ -30,12 +34,13 @@ const calendarSlice = createSlice({
     },
 });
 
-export const { setFirstDayOfWeek, setSelectedDate, setSelectedMonth, setSelectedYear } =
+export const { setFirstDayOfWeek, setToday, setSelectedDay, setSelectedMonth, setSelectedYear } =
     calendarSlice.actions;
 
 export const selectedFirstDayOfWeek = (state: { calendar: IInitialState }) =>
     state.calendar.firstDayOfWeek;
-export const selectedDate = (state: { calendar: IInitialState }) => state.calendar.selectedDate;
+export const selectedToday = (state: { calendar: IInitialState }) => state.calendar.today;
+export const selectedDay = (state: { calendar: IInitialState }) => state.calendar.selectedDay;
 export const selectedMonth = (state: { calendar: IInitialState }) => state.calendar.selectedMonth;
 export const selectedYear = (state: { calendar: IInitialState }) => state.calendar.selectedYear;
 

@@ -1,16 +1,34 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import {
+    selectedFirstDayOfWeek,
+    selectedMonth,
+    selectedToday,
+    selectedYear,
+} from '@features/calendarSlice';
+import { getFullMonth, isDayInCurrentMonth, isDayWeekend, isSameDay } from '@utils/getFullMonth';
 
-import { Day, DaysGridWrapper } from './styled';
+import DayOfWeek from './DayOfWeek';
+import { DaysGridWrapper } from './styled';
 
 const DaysGridContainer = () => {
-    const temp = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
-        26, 27, 28, 29, 30, 31, 1, 2, 3, 4,
-    ];
+    const firstDayOfWeek = useSelector(selectedFirstDayOfWeek);
+    const currentMonth = useSelector(selectedMonth);
+    const currentYear = useSelector(selectedYear);
+    const today = useSelector(selectedToday);
+
+    const MONTH_DAYS = getFullMonth(currentMonth, currentYear, firstDayOfWeek);
+
     return (
         <DaysGridWrapper>
-            {temp.map((date) => (
-                <Day>{date}</Day>
+            {MONTH_DAYS.map((day) => (
+                <DayOfWeek
+                    key={day.getTime()}
+                    day={day}
+                    isActive={isDayInCurrentMonth(day, currentMonth)}
+                    isWeekend={isDayWeekend(day)}
+                    isToday={isSameDay(day, today)}
+                />
             ))}
         </DaysGridWrapper>
     );

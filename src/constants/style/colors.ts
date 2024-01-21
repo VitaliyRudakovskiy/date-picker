@@ -5,6 +5,7 @@ const COLORS: ICodes = {
     text: '#333333',
     month: '#000000',
     border: '#E1E1E1',
+    borderDash: '#9747FF',
     chosenDay: '#2F80ED',
     firstDayRange: '#2F80ED99',
     middletDayRange: '#2F80ED1A',

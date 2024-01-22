@@ -7,16 +7,16 @@ const meta: Meta<typeof DayOfWeek> = {
     component: DayOfWeek,
     argTypes: {
         day: {
-            name: 'DAY',
+            name: 'Current date',
         },
         isActive: {
-            name: 'ACTIVE',
+            name: 'If the day is in the current month',
         },
         isWeekend: {
-            name: 'WEEKEND',
+            name: 'If the day is weekend',
         },
         isToday: {
-            name: 'TODAY',
+            name: 'Today date',
         },
     },
 };

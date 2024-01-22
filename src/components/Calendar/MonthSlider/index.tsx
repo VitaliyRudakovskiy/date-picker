@@ -4,40 +4,72 @@ import prev from '@assets/prev.svg';
 import { MONTHS } from '@constants/calendar';
 import { useCalendar } from '@providers/CalendarProvider';
 
-import { MonthName, MonthSliderIcon, MonthSliderWrapper } from './styled';
+import { MonthName, MonthNameContainer, MonthSliderIcon, MonthSliderWrapper, Year } from './styled';
 
 const MonthSlider = () => {
-    const { selectedMonth, selectedYear, setSelectedMonth, setSelectedYear } = useCalendar();
+    const {
+        selectedMonth,
+        selectedYear,
+        calendarType,
+        setSelectedMonth,
+        setSelectedYear,
+        setCalendarType,
+    } = useCalendar();
 
     const handleMonthChange = useCallback(
         (to: 'next' | 'prev') => () => {
-            let newYear = selectedYear;
-            if (to === 'next') {
-                const newMonth = (selectedMonth + 1) % 12;
-                if (newMonth < selectedMonth) {
-                    newYear++;
-                    setSelectedYear(newYear);
+            if (calendarType === 'Day') {
+                let newYear = selectedYear;
+                if (to === 'next') {
+                    const newMonth = (selectedMonth + 1) % 12;
+                    if (newMonth < selectedMonth) {
+                        newYear++;
+                        setSelectedYear(newYear);
+                    }
+                    setSelectedMonth(newMonth);
+                } else {
+                    const newMonth = (selectedMonth + 11) % 12;
+                    if (newMonth > selectedMonth) {
+                        newYear--;
+                        setSelectedYear(newYear);
+                    }
+                    setSelectedMonth(newMonth);
                 }
-                setSelectedMonth(newMonth);
-            } else {
-                const newMonth = (selectedMonth + 11) % 12;
-                if (newMonth > selectedMonth) {
-                    newYear--;
-                    setSelectedYear(newYear);
-                }
-                setSelectedMonth(newMonth);
+            }
+            if (calendarType === 'Year') {
+                if (to === 'next') setSelectedYear(selectedYear + 10);
+                else setSelectedYear(selectedYear - 10);
             }
         },
 
-        [selectedMonth, selectedYear],
+        [calendarType, selectedMonth, selectedYear],
     );
+
+    const handleMonthClick = useCallback(() => {
+        setCalendarType('Month');
+    }, []);
+
+    const handleYearClick = useCallback(() => {
+        setCalendarType('Year');
+    }, []);
 
     return (
         <MonthSliderWrapper>
             <MonthSliderIcon src={prev} alt="prevMonth" onClick={handleMonthChange('prev')} />
-            <MonthName>
-                {MONTHS[selectedMonth]} {selectedYear}
-            </MonthName>
+            <MonthNameContainer>
+                {calendarType === 'Day' ? (
+                    <>
+                        <MonthName onClick={handleMonthClick}>{MONTHS[selectedMonth]} </MonthName>
+                        <Year onClick={handleYearClick}>{selectedYear}</Year>
+                    </>
+                ) : calendarType === 'Month' ? (
+                    <MonthName>Months</MonthName>
+                ) : (
+                    <MonthName>
+                        {selectedYear - 10} - {selectedYear + 9}
+                    </MonthName>
+                )}
+            </MonthNameContainer>
             <MonthSliderIcon src={next} alt="nextMonth" onClick={handleMonthChange('next')} />
         </MonthSliderWrapper>
     );

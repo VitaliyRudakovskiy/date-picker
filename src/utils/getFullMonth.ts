@@ -1,4 +1,4 @@
-import { FINAL_DATE_PATTERN, MONTHS_LENGTH, WEEK_LENGTH } from '@constants/calendar';
+import { FINAL_DATE_PATTERN, MONTHS, MONTHS_LENGTH, WEEK_LENGTH } from '@constants/calendar';
 
 export const getDaysCountInMonth = (year: number, monthIndex: number) => {
     const date = new Date(year, monthIndex + 1, 0); // get the last day of previous month
@@ -35,13 +35,12 @@ export const getFullMonth = (
         ? (WEEK_LENGTH + firstDayOfMonth - 1) % WEEK_LENGTH
         : (WEEK_LENGTH + firstDayOfMonth) % WEEK_LENGTH;
 
-    const { month: prevMonth, year: prevYear } = getPrevMonth(monthNumber, year);
-    const { month: nextMonth, year: nextYear } = getNextMonth(monthNumber, year);
+    const { month: prevMonth, year: prevYear } = getPrevMonth(year, monthNumber);
+    const { month: nextMonth, year: nextYear } = getNextMonth(year, monthNumber);
 
     const prevMonthDays = getDaysCountInMonth(prevYear, prevMonth);
-
     const prevMonthDates = Array.from({ length: remainingDaysFromPrevMonth }, (_, i) => {
-        const day = prevMonthDays - remainingDaysFromPrevMonth + 1 + i;
+        const day = prevMonthDays - remainingDaysFromPrevMonth + i + 1;
         return new Date(prevYear, prevMonth, day);
     });
 
@@ -61,6 +60,7 @@ export const getFullMonth = (
 
     return [...prevMonthDates, ...currentMonthDates, ...nextMonthDates];
 };
+
 
 export const isDayInCurrentMonth = (currentDate: Date, currentMonth: number, currentYear: number) => {
     return currentDate.getMonth() === currentMonth && currentDate.getFullYear() === currentYear;
@@ -96,4 +96,24 @@ export const areAllDateValuesValid = (inputDate: string) => {
     const isYearValid = tempDate.getFullYear() === year;
     
     return isDayValid && isMonthValid && isYearValid;
+}
+
+export const getMonths = () => {
+    return Object.values(MONTHS).filter(value => typeof value === 'string') as string[];
+}
+
+export const getYears = (year: number) => {
+    const years = [];
+    for (let i = year - 10; i < year + 10; i++) {
+        years.push(i);
+    }
+    return years;
+}
+
+export const isMonthSelected = (month: string, selectedMonth: number) => {
+    return MONTHS[selectedMonth] === month;
+}
+
+export const getMonthIndex = (month: string) => {
+    return MONTHS[month as keyof typeof MONTHS];
 }

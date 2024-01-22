@@ -7,9 +7,16 @@ import { DayOfWeekButton } from './styled';
 import { IDayProps } from './types';
 
 const DayOfWeek = ({ day, isActive, isWeekend, isToday }: IDayProps) => {
-    const { selectedDay, setSelectedDay } = useCalendar();
+    const { selectedDay, setSelectedDay, setSelectedMonth, setSelectedYear } = useCalendar();
 
     const handleSelectDay = useCallback(() => {
+        if (!isActive) {
+            let month = day.getMonth();
+            let year = day.getFullYear();
+
+            setSelectedMonth(month);
+            setSelectedYear(year);
+        }
         setSelectedDay(day);
     }, [selectedDay]);
 

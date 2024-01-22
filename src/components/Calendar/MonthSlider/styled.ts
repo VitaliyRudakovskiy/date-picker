@@ -2,6 +2,7 @@ import { flexBetween } from '@constants/style/presets';
 import styled, { DefaultTheme } from 'styled-components';
 
 const dark = ({ theme }: DefaultTheme) => theme.colors.month;
+const hoverColor = ({ theme }: DefaultTheme) => theme.colors.chosenDay;
 const openSans = ({ theme }: DefaultTheme) => theme.fonts.fontFamily.openSans;
 const fontM = ({ theme }: DefaultTheme) => theme.fonts.fontSize.m;
 const fontBold = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.l;
@@ -18,9 +19,22 @@ export const MonthSliderIcon = styled.img`
     cursor: pointer;
 `;
 
-export const MonthName = styled.h3`
+export const MonthNameContainer = styled.h3`
     font-family: ${openSans};
     font-size: ${fontM}px;
     font-weight: ${fontBold};
     color: ${dark};
+    cursor: pointer;
+`;
+
+export const MonthName = styled.span`
+    &:hover {
+        color: ${hoverColor};
+    }
+`;
+
+export const Year = styled.span`
+    &:hover {
+        color: ${hoverColor};
+    }
 `;

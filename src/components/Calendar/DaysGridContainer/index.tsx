@@ -11,11 +11,13 @@ import {
 } from '@utils/getFullMonth';
 
 import DayOfWeek from './DayOfWeek';
-import { DaysGridWrapper, MonthsGridWrapper, YearsGridWrapper } from './styled';
 import Month from './Month';
+import { DaysGridWrapper, MonthsGridWrapper, YearsGridWrapper } from './styled';
+import { IDaysGridProps } from './types';
 import Year from './Year';
 
-const DaysGridContainer = () => {
+const DaysGridContainer = (props: IDaysGridProps) => {
+    const { isHolidayDate } = props;
     const { firstDayOfWeek, today, selectedMonth, selectedYear, calendarType } = useCalendar();
 
     const CALENDAR_DAYS = useMemo(() => {
@@ -42,6 +44,7 @@ const DaysGridContainer = () => {
                             isActive={isDayInCurrentMonth(day, selectedMonth, selectedYear)}
                             isWeekend={isDayWeekend(day)}
                             isToday={isSameDay(day, today)}
+                            isHoliday={isHolidayDate && isHolidayDate(day)}
                         />
                     ))}
                 </DaysGridWrapper>

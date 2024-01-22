@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import { IMonthProps } from './types';
-import { MonthContainer } from './styled';
 import { useCalendar } from '@providers/CalendarProvider';
 import { getMonthIndex } from '@utils/getFullMonth';
+
+import { MonthContainer } from './styled';
+import { IMonthProps } from './types';
 
 const Month = ({ month, isSelected }: IMonthProps) => {
     const { setCalendarType, setSelectedMonth } = useCalendar();

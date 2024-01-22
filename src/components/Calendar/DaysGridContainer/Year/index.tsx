@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import { IYearProps } from './types';
-import { YearContainer } from './styled';
 import { useCalendar } from '@providers/CalendarProvider';
+
+import { YearContainer } from './styled';
+import { IYearProps } from './types';
 
 const Year = ({ year, isSelected }: IYearProps) => {
     const { setCalendarType, setSelectedYear } = useCalendar();

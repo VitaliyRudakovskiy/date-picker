@@ -3,6 +3,7 @@ export interface IDayProps {
     isActive: boolean;
     isWeekend: boolean;
     isToday: boolean;
+    isHoliday?: boolean;
 }
 
 export interface IDayStyledProps {
@@ -10,4 +11,5 @@ export interface IDayStyledProps {
     $isWeekend: boolean;
     $isToday: boolean;
     $isDaySelected: boolean;
+    $isHoliday?: boolean;
 }

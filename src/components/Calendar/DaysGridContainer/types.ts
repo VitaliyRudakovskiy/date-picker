@@ -1,3 +1,3 @@
-export interface ICalendarProps {
+export interface IDaysGridProps {
     isHolidayDate?: (date: Date) => boolean;
 }

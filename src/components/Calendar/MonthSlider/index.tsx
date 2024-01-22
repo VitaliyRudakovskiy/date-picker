@@ -37,8 +37,8 @@ const MonthSlider = () => {
                 }
             }
             if (calendarType === 'Year') {
-                if (to === 'next') setSelectedYear(selectedYear + 10);
-                else setSelectedYear(selectedYear - 10);
+                if (to === 'next') setSelectedYear(selectedYear + 20);
+                else setSelectedYear(selectedYear - 20);
             }
         },
 

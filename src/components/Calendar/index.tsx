@@ -6,14 +6,16 @@ import DaysGridContainer from './DaysGridContainer';
 import DaysOfWeek from './DaysHeader';
 import MonthSlider from './MonthSlider';
 import { CalendarWrapper } from './styled';
+import { ICalendarProps } from './types';
 
-const Calendar = () => {
+const Calendar = (props: ICalendarProps) => {
+    const { isHolidayDate } = props;
     return (
         <ErrorBoundary>
             <CalendarWrapper>
                 <MonthSlider />
                 <DaysOfWeek />
-                <DaysGridContainer />
+                <DaysGridContainer isHolidayDate={isHolidayDate} />
             </CalendarWrapper>
         </ErrorBoundary>
     );

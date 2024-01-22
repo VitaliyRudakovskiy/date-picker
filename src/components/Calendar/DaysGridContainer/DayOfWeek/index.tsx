@@ -6,13 +6,14 @@ import { isSameDay } from '@utils/getFullMonth';
 import { DayOfWeekButton } from './styled';
 import { IDayProps } from './types';
 
-const DayOfWeek = ({ day, isActive, isWeekend, isToday }: IDayProps) => {
+const DayOfWeek = (props: IDayProps) => {
+    const { day, isActive, isWeekend, isToday, isHoliday = false } = props;
     const { selectedDay, setSelectedDay, setSelectedMonth, setSelectedYear } = useCalendar();
 
     const handleSelectDay = useCallback(() => {
         if (!isActive) {
-            let month = day.getMonth();
-            let year = day.getFullYear();
+            const month = day.getMonth();
+            const year = day.getFullYear();
 
             setSelectedMonth(month);
             setSelectedYear(year);
@@ -25,6 +26,7 @@ const DayOfWeek = ({ day, isActive, isWeekend, isToday }: IDayProps) => {
             $isActive={isActive}
             $isWeekend={isWeekend}
             $isToday={isToday}
+            $isHoliday={isHoliday}
             onClick={handleSelectDay}
             $isDaySelected={isSameDay(day, selectedDay)}
         >

@@ -21,11 +21,12 @@ export const DayOfWeekButton = styled.div<IDayStyledProps>`
     max-width: ${cellWidth};
     color: ${({ $isActive, $isWeekend, $isDaySelected }) =>
         !$isActive ? disabledDay : $isDaySelected ? primary : $isWeekend ? 'red' : activeDay};
-    background-color: ${({$isDaySelected}) => $isDaySelected ? chosenDay : primary};
+    background-color: ${({ $isDaySelected }) => ($isDaySelected ? chosenDay : primary)};
     border: 1px solid ${primary};
     border-color: ${({ $isToday }) => ($isToday ? chosenDay : 'none')};
     border-radius: ${rem05};
     cursor: pointer;
+    text-decoration: ${({ $isHoliday }) => ($isHoliday ? 'underline overline red' : 'none')};
 
     &:hover {
         border: 1px dashed ${borderDash};

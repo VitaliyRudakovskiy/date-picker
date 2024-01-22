@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
         scroll-behavior: smooth;
         outline: none;
         color: ${COLORS.text};
+        user-select: none;
     }
 `;
 

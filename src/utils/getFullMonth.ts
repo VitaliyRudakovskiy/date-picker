@@ -1,4 +1,4 @@
-import { FINAL_DATE_PATTERN, MAX_DAYS_IN_GRID, MONTHS_LENGTH, WEEK_LENGTH } from '@constants/calendar';
+import { FINAL_DATE_PATTERN, MONTHS_LENGTH, WEEK_LENGTH } from '@constants/calendar';
 
 export const getDaysCountInMonth = (year: number, monthIndex: number) => {
     const date = new Date(year, monthIndex + 1, 0); // get the last day of previous month
@@ -51,7 +51,7 @@ export const getFullMonth = (
     });
 
     const remainingDaysToNextMonth = daysCountInMonth + remainingDaysFromPrevMonth;
-    const weeksToAdd = Math.ceil(MAX_DAYS_IN_GRID / WEEK_LENGTH);
+    const weeksToAdd = Math.ceil(remainingDaysToNextMonth / WEEK_LENGTH);
     const daysToAdd = weeksToAdd * WEEK_LENGTH - remainingDaysToNextMonth;
 
     const nextMonthDates = Array.from({ length: daysToAdd }, (_, i) => {

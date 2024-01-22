@@ -1,19 +1,17 @@
 import React, { useCallback } from 'react';
+import withTheme from '@hoc/withTheme';
+import { useCalendar } from '@providers/CalendarProvider';
+import { isSameDay } from '@utils/getFullMonth';
 
 import { DayOfWeekButton } from './styled';
 import { IDayProps } from './types';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectedDay, setSelectedDay } from '@features/calendarSlice';
-import { isSameDay } from '@utils/getFullMonth';
 
 const DayOfWeek = ({ day, isActive, isWeekend, isToday }: IDayProps) => {
-    const selectDay = useSelector(selectedDay);
-
-    const dispatch = useDispatch();
+    const { selectedDay, setSelectedDay } = useCalendar();
 
     const handleSelectDay = useCallback(() => {
-        dispatch(setSelectedDay(day));
-    }, [selectDay]);
+        setSelectedDay(day);
+    }, [selectedDay]);
 
     return (
         <DayOfWeekButton
@@ -21,11 +19,11 @@ const DayOfWeek = ({ day, isActive, isWeekend, isToday }: IDayProps) => {
             $isWeekend={isWeekend}
             $isToday={isToday}
             onClick={handleSelectDay}
-            $isDaySelected={isSameDay(day, selectDay)}
+            $isDaySelected={isSameDay(day, selectedDay)}
         >
             {day.getDate()}
         </DayOfWeekButton>
     );
 };
 
-export default DayOfWeek;
+export default withTheme(DayOfWeek);

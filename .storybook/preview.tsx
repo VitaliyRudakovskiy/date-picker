@@ -1,8 +1,12 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
+
+import CalendarProvider from '../src/providers/CalendarProvider';
 
 const preview: Preview = {
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
+        layout: 'centered',
         controls: {
             matchers: {
                 color: /(background|color)$/i,
@@ -10,6 +14,13 @@ const preview: Preview = {
             },
         },
     },
+    decorators: [
+        (Story) => (
+            <CalendarProvider>
+                <Story />
+            </CalendarProvider>
+        ),
+    ],
 };
 
 export default preview;

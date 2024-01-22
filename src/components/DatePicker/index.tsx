@@ -4,6 +4,7 @@ import clear from '@assets/clear.svg';
 import Calendar from '@components/Calendar';
 import { Icon } from '@constants/style/globalStyles';
 import withTheme from '@hoc/withTheme';
+import CalendarProvider from '@providers/CalendarProvider';
 
 import DatePickerInput from './DatePickerInput';
 import { DateLabelContainer, DatePickerHeader, DatePickerWrapper, ErrorText } from './styled';
@@ -22,25 +23,27 @@ const DatePicker: FC = () => {
     };
 
     return (
-        <DatePickerWrapper>
-            <DateLabelContainer>
-                <p>Date</p>
-                {invalidInputError && <ErrorText>{invalidInputError}</ErrorText>}
-            </DateLabelContainer>
+        <CalendarProvider>
+            <DatePickerWrapper>
+                <DateLabelContainer>
+                    <p>Date</p>
+                    {invalidInputError && <ErrorText>{invalidInputError}</ErrorText>}
+                </DateLabelContainer>
 
-            <DatePickerHeader>
-                <Icon src={calendar} alt="Toggle calendar" onClick={handleCalendarIconClick} />
-                <DatePickerInput
-                    inputText={inputText}
-                    setInputText={setInputText}
-                    setIsCalendarOpen={setIsCalendarOpen}
-                    setInvalidInputError={setInvalidInputError}
-                />
-                <Icon src={clear} alt="Clear text" onClick={handleClearIconClick} />
-            </DatePickerHeader>
+                <DatePickerHeader>
+                    <Icon src={calendar} alt="Toggle calendar" onClick={handleCalendarIconClick} />
+                    <DatePickerInput
+                        inputText={inputText}
+                        setInputText={setInputText}
+                        setIsCalendarOpen={setIsCalendarOpen}
+                        setInvalidInputError={setInvalidInputError}
+                    />
+                    <Icon src={clear} alt="Clear text" onClick={handleClearIconClick} />
+                </DatePickerHeader>
 
-            {isCalendarOpen && <Calendar />}
-        </DatePickerWrapper>
+                {isCalendarOpen && <Calendar />}
+            </DatePickerWrapper>
+        </CalendarProvider>
     );
 };
 

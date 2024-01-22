@@ -1,24 +1,24 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import DayOfWeek from './index';
-import { Provider } from 'react-redux';
-import store from '@store/store';
-import withTheme from '@hoc/withTheme';
 
 const meta: Meta<typeof DayOfWeek> = {
     title: 'Component/DayOfWeek',
-    component: (args) => (
-        <Provider store={store}>
-            <DayOfWeek {...args} />
-        </Provider>
-    ),
-    decorators: [
-        (DayOfWeek) => {
-            const ThemeProvider = withTheme(DayOfWeek);
-            return <ThemeProvider />;
+    component: DayOfWeek,
+    argTypes: {
+        day: {
+            name: 'DAY',
         },
-    ],
+        isActive: {
+            name: 'ACTIVE',
+        },
+        isWeekend: {
+            name: 'WEEKEND',
+        },
+        isToday: {
+            name: 'TODAY',
+        },
+    },
 };
 
 export default meta;

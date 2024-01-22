@@ -25,7 +25,7 @@ const DaysGridContainer = () => {
                 <DayOfWeek
                     key={day.getTime()}
                     day={day}
-                    isActive={isDayInCurrentMonth(day, currentMonth)}
+                    isActive={isDayInCurrentMonth(day, currentMonth, currentYear)}
                     isWeekend={isDayWeekend(day)}
                     isToday={isSameDay(day, today)}
                 />

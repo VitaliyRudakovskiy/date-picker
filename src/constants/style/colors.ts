@@ -8,7 +8,7 @@ const COLORS: ICodes = {
     borderDash: '#9747FF',
     chosenDay: '#2F80ED',
     firstDayRange: '#2F80ED99',
-    middletDayRange: '#2F80ED1A',
+    middleDayRange: '#2F80ED1A',
     disabledDay: '#AAAAAA',
     errorText: '#B91414',
 };

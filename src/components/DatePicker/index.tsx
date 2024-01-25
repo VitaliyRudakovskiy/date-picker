@@ -1,18 +1,21 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import calendar from '@assets/calendar.svg';
 import clear from '@assets/clear.svg';
-import Calendar from '@components/Calendar';
 import { Icon } from '@constants/style/globalStyles';
 import withTheme from '@hoc/withTheme';
 import CalendarProvider from '@providers/CalendarProvider';
 
 import DatePickerInput from './DatePickerInput';
 import { DateLabelContainer, DatePickerHeader, DatePickerWrapper, ErrorText } from './styled';
+import { IDatePickerProps } from './types';
+import { useRange } from '@providers/RangeProvider';
 
-const DatePicker: FC = () => {
+const DatePicker = ({ CalendarView, rangeStart, rangeEnd }: IDatePickerProps) => {
     const [inputText, setInputText] = useState<string>('');
     const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
     const [invalidInputError, setInvalidInputError] = useState<string>('');
+
+    const { setRange } = useRange();
 
     const handleClearIconClick = () => {
         setInputText('');
@@ -41,7 +44,7 @@ const DatePicker: FC = () => {
                     <Icon src={clear} alt="Clear text" onClick={handleClearIconClick} />
                 </DatePickerHeader>
 
-                {isCalendarOpen && <Calendar />}
+                {isCalendarOpen && <CalendarView />}
             </DatePickerWrapper>
         </CalendarProvider>
     );

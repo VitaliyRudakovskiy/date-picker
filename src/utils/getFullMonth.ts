@@ -85,6 +85,7 @@ export const isSameDay = (date1: Date, date2: Date) => {
 export const isDateValid = (inputDate: string) => {
     return FINAL_DATE_PATTERN.test(inputDate);
 };
+
 export const getDateParts = (inputDate: string) => {
     const values = inputDate.split('.').map((item) => parseInt(item));
     return values;
@@ -129,3 +130,11 @@ export const isHolidayDate = (date: Date): boolean => {
             date.getMonth() === holiday.date.getMonth(),
     );
 };
+
+export const convertRangeDate = (date: Date): string => {
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString();
+  
+    return `${day}.${month}.${year}`;
+}

@@ -1,14 +1,10 @@
-import styled, { DefaultTheme } from 'styled-components';
-
-const fontM = ({ theme }: DefaultTheme) => theme.fonts.fontSize.m;
-const fontBold = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.l;
-const gapS = ({ theme }: DefaultTheme) => theme.gaps.s;
+import styled from 'styled-components';
 
 const DayOfWeekContainer = styled.span`
     text-align: center;
-    font-size: ${fontM}px;
-    font-weight: ${fontBold};
-    padding: ${gapS} 6px;
+    font-size: ${({ theme }) => theme.fonts.fontSize.m}px;
+    font-weight: ${({ theme }) => theme.fonts.fontWeight.l};
+    padding: ${({ theme }) => theme.gaps.s} 6px;
 `;
 
 export default DayOfWeekContainer;

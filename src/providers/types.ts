@@ -23,3 +23,15 @@ export interface ICalendarContext {
     setSelectedYear: DispatchNumber;
     setCalendarType: DispatchCalendarType;
 }
+
+export interface IRange {
+    rangeStart?: Date;
+    rangeEnd?: Date;
+}
+
+type DispatchRange = Dispatch<SetStateAction<IRange | undefined>>;
+
+export interface IRangeContext {
+    range: IRange | undefined;
+    setRange: DispatchRange;
+}

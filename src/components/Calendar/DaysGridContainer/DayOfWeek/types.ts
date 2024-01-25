@@ -4,6 +4,7 @@ export interface IDayProps {
     isWeekend: boolean;
     isToday: boolean;
     isHoliday?: boolean;
+    isWithRange?: boolean;
 }
 
 export interface IDayStyledProps {
@@ -12,4 +13,5 @@ export interface IDayStyledProps {
     $isToday: boolean;
     $isDaySelected: boolean;
     $isHoliday?: boolean;
+    $range?: "Start" | "Between" | "End";
 }

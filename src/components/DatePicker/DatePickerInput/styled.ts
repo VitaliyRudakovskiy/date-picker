@@ -1,9 +1,7 @@
-import styled, { DefaultTheme } from 'styled-components';
-
-const textL = ({ theme }: DefaultTheme) => theme.fonts.fontSize.l;
+import styled from 'styled-components';
 
 const DateInput = styled.input`
-    font-size: ${textL}px;
+    font-size: ${({ theme }) => theme.fonts.fontSize.l}px;
     width: 100%;
     border: none;
     background: transparent;

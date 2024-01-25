@@ -1,8 +1,6 @@
-import styled, { DefaultTheme } from 'styled-components';
-
-const cell = ({ theme }: DefaultTheme) => theme.sizes.cellSize;
+import styled from 'styled-components';
 
 export const DaysOfWeekWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(7, ${cell});
+    grid-template-columns: repeat(7, ${({ theme }) => theme.sizes.cellSize});
 `;

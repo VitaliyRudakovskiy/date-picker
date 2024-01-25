@@ -1,17 +1,13 @@
 import { flexCenter } from '@constants/style/presets';
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
+import { ICalendarStyledProps } from './types';
 
-const calendarWidth = ({ theme }: DefaultTheme) => theme.sizes.calendarWidth;
-const gapS = ({ theme }: DefaultTheme) => theme.gaps.s;
-const gapM = ({ theme }: DefaultTheme) => theme.gaps.m;
-const borderColor = ({ theme }: DefaultTheme) => theme.colors.border;
-
-export const CalendarWrapper = styled.div`
+export const CalendarWrapper = styled.div<ICalendarStyledProps>`
     ${flexCenter};
     width: 100%;
-    max-width: ${calendarWidth};
+    max-width: ${({ theme }) => theme.sizes.calendarWidth};
     flex-direction: column;
-    border: 1px solid ${borderColor};
-    border-radius: ${gapS};
-    padding: ${gapM};
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: ${({ theme, $isRangeExist }) => $isRangeExist ? `${theme.gaps.s} ${theme.gaps.s} 0 0` : theme.gaps.s};
+    padding: ${({ theme }) => theme.gaps.m};
 `;

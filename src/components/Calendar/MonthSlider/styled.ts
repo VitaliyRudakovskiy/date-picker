@@ -1,40 +1,33 @@
 import { flexBetween } from '@constants/style/presets';
-import styled, { DefaultTheme } from 'styled-components';
-
-const dark = ({ theme }: DefaultTheme) => theme.colors.month;
-const hoverColor = ({ theme }: DefaultTheme) => theme.colors.chosenDay;
-const openSans = ({ theme }: DefaultTheme) => theme.fonts.fontFamily.openSans;
-const fontM = ({ theme }: DefaultTheme) => theme.fonts.fontSize.m;
-const fontBold = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.l;
-const gapM = ({ theme }: DefaultTheme) => theme.gaps.m;
+import styled from 'styled-components';
 
 export const MonthSliderWrapper = styled.div`
     width: 100%;
     ${flexBetween};
-    padding: ${gapM} 0;
+    padding: ${({ theme }) => theme.gaps.m} 0;
 `;
 
 export const MonthSliderIcon = styled.img`
-    color: ${dark};
+    color: ${({ theme }) => theme.colors.month};
     cursor: pointer;
 `;
 
 export const MonthNameContainer = styled.h3`
-    font-family: ${openSans};
-    font-size: ${fontM}px;
-    font-weight: ${fontBold};
-    color: ${dark};
+    font-family: ${({ theme }) => theme.fonts.fontFamily.openSans};
+    font-size: ${({ theme }) => theme.fonts.fontSize.m}px;
+    font-weight: ${({ theme }) => theme.fonts.fontWeight.l};
+    color: ${({ theme }) => theme.colors.month};
     cursor: pointer;
 `;
 
 export const MonthName = styled.span`
     &:hover {
-        color: ${hoverColor};
+        color: ${({ theme }) => theme.colors.chosenDay};
     }
 `;
 
 export const Year = styled.span`
     &:hover {
-        color: ${hoverColor};
+        color: ${({ theme }) => theme.colors.chosenDay};
     }
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import type { Preview } from '@storybook/react';
 
 import CalendarProvider from '../src/providers/CalendarProvider';
+import RangeProvider from '../src/providers/RangeProvider';
 import ErrorBoundary from '../src/components/ErrorBoundary';
 
 const preview: Preview = {
@@ -18,9 +19,11 @@ const preview: Preview = {
     decorators: [
         (Story) => (
             <CalendarProvider>
-                <ErrorBoundary>
-                    <Story />
-                </ErrorBoundary>
+                <RangeProvider>
+                    <ErrorBoundary>
+                        <Story />
+                    </ErrorBoundary>
+                </RangeProvider>
             </CalendarProvider>
         ),
     ],

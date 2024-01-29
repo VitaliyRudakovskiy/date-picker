@@ -18,9 +18,7 @@ export const DatePickerHeader = styled.div`
     margin: ${gapS} auto;
 `;
 
-export const DateLabelContainer = styled.div`
-    
-`;
+export const DateLabelContainer = styled.div``;
 
 export const ErrorText = styled.p`
     font-size: 12px;

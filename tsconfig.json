@@ -21,7 +21,6 @@
             "@components/*": ["components/*"],
             "@constants/*": ["constants/*"],
             "@hoc/*": ["hoc/*"],
-            "@hooks/*": ["hooks/*"],
             "@providers/*": ["providers/*"],
             "@utils/*": ["utils/*"],
         },

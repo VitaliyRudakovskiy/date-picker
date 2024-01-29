@@ -1,18 +1,15 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import { ICalendarContext, IProviderProps } from './types';
+import { DispatchDate, ICalendarContext, IProviderProps } from './types';
 
 const now = new Date();
 
 const CalendarContext = createContext<ICalendarContext>({
-    firstDayOfWeek: 'Monday',
     today: now,
-    selectedDay: now,
+    selectedDay: undefined,
     selectedMonth: now.getMonth(),
     selectedYear: now.getFullYear(),
     calendarType: 'Day',
-    setFirstDayOfWeek: () => undefined,
-    setToday: () => undefined,
     setSelectedDay: () => undefined,
     setSelectedMonth: () => undefined,
     setSelectedYear: () => undefined,
@@ -24,23 +21,19 @@ export const useCalendar = () => {
 };
 
 const CalendarProvider = ({ children }: IProviderProps) => {
-    const [firstDayOfWeek, setFirstDayOfWeek] = useState<'Monday' | 'Sunday'>('Monday');
-    const [today, setToday] = useState<Date>(now);
-    const [selectedDay, setSelectedDay] = useState<Date>(now);
+    const [today] = useState<Date>(now);
+    const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined);
     const [selectedMonth, setSelectedMonth] = useState<number>(now.getMonth());
     const [selectedYear, setSelectedYear] = useState<number>(now.getFullYear());
     const [calendarType, setCalendarType] = useState<'Day' | 'Month' | 'Year'>('Day');
 
     const commonValue = {
-        firstDayOfWeek,
         today,
         selectedDay,
         selectedMonth,
         selectedYear,
         calendarType,
-        setFirstDayOfWeek,
-        setToday,
-        setSelectedDay,
+        setSelectedDay: setSelectedDay as DispatchDate,
         setSelectedMonth,
         setSelectedYear,
         setCalendarType,

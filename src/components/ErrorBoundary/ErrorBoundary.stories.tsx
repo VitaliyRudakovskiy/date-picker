@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import ErrorBoundary from './index';
 
-const GoodComponent = () => <p>Hi! I am from Minsk</p>;
+const GoodComponent = () => <p>This is the component without an error</p>;
 const ErrorComponent = () => {
     throw new Error('Test error');
 };

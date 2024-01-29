@@ -1,18 +1,16 @@
 import React, { useMemo } from 'react';
 import { DAYS_OF_WEEK } from '@constants/calendar';
 import withTheme from '@hoc/withTheme';
-import { useCalendar } from '@providers/CalendarProvider';
 
 import DayOfWeek from './DayName';
 import { DaysOfWeekWrapper } from './styled';
+import { IDaysOfWeekProps } from './types';
 
-const DaysOfWeek = () => {
-    const { firstDayOfWeek } = useCalendar();
-
+const DaysOfWeek = ({ isSundayFirst = false }: IDaysOfWeekProps) => {
     const daysOfWeek = useMemo(() => {
         const allDays = Object.values(DAYS_OF_WEEK);
-        return firstDayOfWeek === 'Monday' ? allDays : [allDays[6], ...allDays.slice(0, 6)];
-    }, [firstDayOfWeek]);
+        return !isSundayFirst ? allDays : [allDays[6], ...allDays.slice(0, 6)];
+    }, []);
 
     return (
         <DaysOfWeekWrapper>

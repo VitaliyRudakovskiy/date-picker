@@ -1,17 +1,19 @@
 export interface IDayProps {
     day: Date;
     isActive: boolean;
-    isWeekend: boolean;
+    isWeekend?: boolean;
     isToday: boolean;
     isHoliday?: boolean;
     isWithRange?: boolean;
+    isWithSelectedDay?: boolean;
+    isWithTasks?: boolean;
 }
 
 export interface IDayStyledProps {
     $isActive: boolean;
-    $isWeekend: boolean;
+    $isWeekend?: boolean;
     $isToday: boolean;
     $isDaySelected: boolean;
     $isHoliday?: boolean;
-    $range?: "Start" | "Between" | "End";
+    $range?: 'Start' | 'Between' | 'End';
 }

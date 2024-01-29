@@ -2,7 +2,7 @@ import { FINAL_DATE_PATTERN, MONTHS, MONTHS_LENGTH, WEEK_LENGTH } from '@constan
 import { HOLIDAYS } from '@constants/holidays';
 
 export const getDaysCountInMonth = (year: number, monthIndex: number) => {
-    const date = new Date(year, monthIndex + 1, 0); // get the last day of previous month
+    const date = new Date(year, monthIndex + 1, 0);
     return date.getDate();
 };
 
@@ -75,6 +75,7 @@ export const isDayWeekend = (currentDate: Date) => {
 };
 
 export const isSameDay = (date1: Date, date2: Date) => {
+    if (!date2) return false;
     return (
         date1.getDate() === date2.getDate() &&
         date1.getMonth() === date2.getMonth() &&
@@ -131,10 +132,10 @@ export const isHolidayDate = (date: Date): boolean => {
     );
 };
 
-export const convertRangeDate = (date: Date): string => {
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+export const getReadbleDate = (date: Date): string => {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear().toString();
-  
+
     return `${day}.${month}.${year}`;
-}
+};

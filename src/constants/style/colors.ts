@@ -10,6 +10,9 @@ const COLORS: ICodes = {
     firstDayRange: '#2F80ED99',
     middleDayRange: '#2F80ED1A',
     disabledDay: '#AAAAAA',
+    weekendDay: '#FF0000',
+    holiday: '#CD5C5C',
+    taskMarkColor: '#32CD32',
     errorText: '#B91414',
 };
 

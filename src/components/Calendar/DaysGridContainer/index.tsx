@@ -17,8 +17,17 @@ import { IDaysGridProps } from './types';
 import Year from './Year';
 
 const DaysGridContainer = (props: IDaysGridProps) => {
-    const { isHolidayDate, isWithRange } = props;
-    const { firstDayOfWeek, today, selectedMonth, selectedYear, calendarType } = useCalendar();
+    const {
+        isHolidayDate,
+        isWithRange,
+        isDayWeekend,
+        isWithSelectedDay,
+        isSundayFirst = false,
+        isWithTasks,
+    } = props;
+    const { today, selectedMonth, selectedYear, calendarType } = useCalendar();
+
+    const firstDayOfWeek = isSundayFirst ? 'Sunday' : 'Monday';
 
     const CALENDAR_DAYS = useMemo(() => {
         if (calendarType === 'Day')
@@ -42,10 +51,12 @@ const DaysGridContainer = (props: IDaysGridProps) => {
                             key={day.getTime()}
                             day={day}
                             isActive={isDayInCurrentMonth(day, selectedMonth, selectedYear)}
-                            isWeekend={isDayWeekend(day)}
+                            isWeekend={isDayWeekend && isDayWeekend(day)}
                             isToday={isSameDay(day, today)}
                             isHoliday={isHolidayDate && isHolidayDate(day)}
                             isWithRange={isWithRange}
+                            isWithSelectedDay={isWithSelectedDay}
+                            isWithTasks={isWithTasks}
                         />
                     ))}
                 </DaysGridWrapper>

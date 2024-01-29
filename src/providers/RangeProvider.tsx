@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+
 import { IProviderProps, IRange, IRangeContext } from './types';
 
 const RangeContext = createContext<IRangeContext>({

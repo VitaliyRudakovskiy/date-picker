@@ -22,5 +22,4 @@ export interface ITheme {
 export interface IHoliday {
     name: string;
     date: Date;
-    type: 'state' | 'republic' | 'other';
 }

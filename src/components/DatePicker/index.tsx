@@ -8,14 +8,11 @@ import CalendarProvider from '@providers/CalendarProvider';
 import DatePickerInput from './DatePickerInput';
 import { DateLabelContainer, DatePickerHeader, DatePickerWrapper, ErrorText } from './styled';
 import { IDatePickerProps } from './types';
-import { useRange } from '@providers/RangeProvider';
 
-const DatePicker = ({ CalendarView, rangeStart, rangeEnd }: IDatePickerProps) => {
+const DatePicker = ({ CalendarView }: IDatePickerProps) => {
     const [inputText, setInputText] = useState<string>('');
     const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
     const [invalidInputError, setInvalidInputError] = useState<string>('');
-
-    const { setRange } = useRange();
 
     const handleClearIconClick = () => {
         setInputText('');

@@ -1,11 +1,21 @@
+import { ComponentType } from 'react';
+import UtilityCalendar from '@hoc/index';
+import withHolidays from '@hoc/withHolidays';
+import withSelectedDay from '@hoc/withSelectedDay';
+import withWeekends from '@hoc/withWeekends';
 import { Meta, StoryObj } from '@storybook/react';
 
 import DatePicker from './index';
-import UtilityCalendar from '@hoc/index';
-import { ComponentType } from 'react';
+import withTasks from '@hoc/withTasks';
 
-const calendarService = new UtilityCalendar();
-const DefaultCalendar = calendarService.getCalendar() as ComponentType;
+const utilutyCalendar = new UtilityCalendar();
+const DefaultCalendar = utilutyCalendar.getCalendar() as ComponentType;
+
+utilutyCalendar.addDecorator(withSelectedDay);
+utilutyCalendar.addDecorator(withHolidays);
+utilutyCalendar.addDecorator(withWeekends);
+utilutyCalendar.addDecorator(withTasks);
+const WithDecoratorsCalendar = utilutyCalendar.getCalendar() as ComponentType;
 
 const meta: Meta<typeof DatePicker> = {
     title: 'Component/DatePicker',
@@ -22,8 +32,14 @@ const meta: Meta<typeof DatePicker> = {
 export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
-export const Primary: Story = {
+export const Default: Story = {
     args: {
         CalendarView: DefaultCalendar,
+    },
+};
+
+export const Fullfilled: Story = {
+    args: {
+        CalendarView: WithDecoratorsCalendar,
     },
 };

@@ -1,35 +1,43 @@
-import styled, { DefaultTheme } from 'styled-components';
+import { calculateBackgroundColor, calculateTextColor } from '@utils/calculateStyles';
+import styled from 'styled-components';
 
 import { IDayStyledProps } from './types';
 
-const gapS = ({ theme }: DefaultTheme) => theme.gaps.s;
-const fontS = ({ theme }: DefaultTheme) => theme.fonts.fontSize.s;
-const fontWeightM = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.m;
-const activeDay = ({ theme }: DefaultTheme) => theme.colors.text;
-const disabledDay = ({ theme }: DefaultTheme) => theme.colors.disabledDay;
-const middleDayRange = ({ theme }: DefaultTheme) => theme.colors.middleDayRange;
-const chosenDay = ({ theme }: DefaultTheme) => theme.colors.chosenDay;
-const primary = ({ theme }: DefaultTheme) => theme.colors.primary;
-const borderDash = ({ theme }: DefaultTheme) => theme.colors.borderDash;
-const rem05 = ({ theme }: DefaultTheme) => theme.gaps.m;
-const cellWidth = ({ theme }: DefaultTheme) => theme.sizes.cellSize;
-
 export const DayOfWeekButton = styled.div<IDayStyledProps>`
-    font-size: ${fontS}px;
-    font-weight: ${fontWeightM};
+    position: relative;
+    font-size: ${({ theme }) => theme.fonts.fontSize.s}px;
+    font-weight: ${({ theme }) => theme.fonts.fontWeight.m};
     text-align: center;
-    padding: ${gapS} 6px;
-    max-width: ${cellWidth};
-    color: ${({ $isActive, $isWeekend, $isDaySelected }) =>
-        !$isActive ? disabledDay : $isDaySelected ? primary : $isWeekend ? 'red' : activeDay};
-    background-color: ${({ $isDaySelected, $range }) => ($isDaySelected || $range === "End" ? chosenDay : $range === "Between" ? middleDayRange : $range === "Start" ? chosenDay : primary)};
-    border: 1px solid ${primary};
-    border-color: ${({ $isToday }) => ($isToday ? chosenDay : 'none')};
-    border-radius: ${rem05};
+    padding: ${({ theme }) => theme.gaps.s} 6px;
+    max-width: ${({ theme }) => theme.sizes.cellSize};
+    color: ${({ $isActive, $isWeekend, $isDaySelected, $isHoliday, $range }) =>
+        calculateTextColor($isActive, $isWeekend, $isDaySelected, $isHoliday, $range)};
+    background-color: ${({ $isDaySelected, $range }) =>
+        calculateBackgroundColor($isDaySelected, $range)};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
+    border-color: ${({ $isToday }) => ($isToday ? ({ theme }) => theme.colors.chosenDay : 'none')};
+    border-radius: ${({ $range }) =>
+        $range && $range === 'Start'
+            ? `10px 0 0 10px`
+            : $range === 'Between'
+              ? 0
+              : $range === 'End'
+                ? `0 10px 10px 0`
+                : '10px'};
     cursor: pointer;
-    text-decoration: ${({ $isHoliday }) => ($isHoliday ? 'underline overline red' : 'none')};
 
     &:hover {
-        border: 1px dashed ${borderDash};
+        border: 1px dashed ${({ theme }) => theme.colors.borderDash};
     }
+`;
+
+export const TasksMark = styled.div`
+    position: absolute;
+    left: 40%;
+    top: 2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.taskMarkColor};
 `;

@@ -43,12 +43,3 @@ export const getRangeState = (date: Date, range: IRange) => {
 export const isDateBetweenMinAndMax = (day: Date, min: Date, max: Date) => {
     return day.getTime() >= min.getTime() && day.getTime() <= max.getTime();
 };
-
-export const getDefaultDates = () => {
-    const now = new Date();
-
-    const defaultMinDate = new Date(now.setMonth(now.getMonth() - 3));
-    const defaultMaxDate = new Date(now.setMonth(now.getMonth() + 3));
-
-    return { defaultMinDate, defaultMaxDate };
-};

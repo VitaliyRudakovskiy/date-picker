@@ -1,14 +1,8 @@
 import React, { useMemo } from 'react';
 import { useCalendar } from '@providers/CalendarProvider';
-import {
-    getFullMonth,
-    getMonths,
-    getYears,
-    isDayInCurrentMonth,
-    isDayWeekend,
-    isMonthSelected,
-    isSameDay,
-} from '@utils/getFullMonth';
+import { getMonths, getYears } from '@utils/calendarHelper';
+import { isDayInCurrentMonth, isMonthSelected, isSameDay } from '@utils/checkDate';
+import { getFullMonth } from '@utils/getFullMonth';
 
 import DayOfWeek from './DayOfWeek';
 import Month from './Month';
@@ -16,15 +10,16 @@ import { DaysGridWrapper, MonthsGridWrapper, YearsGridWrapper } from './styled';
 import { IDaysGridProps } from './types';
 import Year from './Year';
 
-const DaysGridContainer = (props: IDaysGridProps) => {
-    const {
-        isHolidayDate,
-        isWithRange,
-        isDayWeekend,
-        isWithSelectedDay,
-        isSundayFirst = false,
-        isWithTasks,
-    } = props;
+const DaysGridContainer = ({
+    isHolidayDate,
+    isWithRange,
+    isDayWeekend,
+    isWithSelectedDay,
+    isSundayFirst = false,
+    isWithTasks,
+    minValue,
+    maxValue,
+}: IDaysGridProps) => {
     const { today, selectedMonth, selectedYear, calendarType } = useCalendar();
 
     const firstDayOfWeek = isSundayFirst ? 'Sunday' : 'Monday';
@@ -57,6 +52,8 @@ const DaysGridContainer = (props: IDaysGridProps) => {
                             isWithRange={isWithRange}
                             isWithSelectedDay={isWithSelectedDay}
                             isWithTasks={isWithTasks}
+                            minValue={minValue}
+                            maxValue={maxValue}
                         />
                     ))}
                 </DaysGridWrapper>

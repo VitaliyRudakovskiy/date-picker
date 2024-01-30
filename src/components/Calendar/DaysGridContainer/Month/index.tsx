@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useCalendar } from '@providers/CalendarProvider';
-import { getMonthIndex } from '@utils/getFullMonth';
+import { getMonthIndex } from '@utils/calendarHelper';
 
 import { MonthContainer } from './styled';
 import { IMonthProps } from './types';

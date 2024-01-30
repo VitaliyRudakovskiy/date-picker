@@ -1,4 +1,5 @@
 import React, { KeyboardEvent, memo } from 'react';
+
 import { Input, ModalButton, ModalInputWrapper } from './styled';
 import { IModalInputProps } from './types';
 

@@ -1,12 +1,13 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { CloseButton, ModalContainer, ModalOverlay, ModalTitle, TasksContainer } from './styled';
 import { useCalendar } from '@providers/CalendarProvider';
-import { getReadbleDate } from '@utils/getFullMonth';
-import ModalInput from './ModalInput';
-import { IModalProps, ITask } from './types';
+import { getReadbleDate } from '@utils/calendarHelper';
 import { getTasksFromLocalStorage, saveTasksToLocalStorage } from '@utils/tasksHelper';
+
+import ModalInput from './ModalInput';
+import { CloseButton, ModalContainer, ModalOverlay, ModalTitle, TasksContainer } from './styled';
 import Task from './Task';
+import { IModalProps, ITask } from './types';
 
 const Modal = ({ onClose }: IModalProps) => {
     const [taskText, setTaskText] = useState<string>('');

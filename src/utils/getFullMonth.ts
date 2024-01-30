@@ -1,5 +1,4 @@
-import { FINAL_DATE_PATTERN, MONTHS, MONTHS_LENGTH, WEEK_LENGTH } from '@constants/calendar';
-import { HOLIDAYS } from '@constants/holidays';
+import { MONTHS_LENGTH, WEEK_LENGTH } from '@constants/calendar';
 
 export const getDaysCountInMonth = (year: number, monthIndex: number) => {
     const date = new Date(year, monthIndex + 1, 0);
@@ -60,82 +59,4 @@ export const getFullMonth = (
     });
 
     return [...prevMonthDates, ...currentMonthDates, ...nextMonthDates];
-};
-
-export const isDayInCurrentMonth = (
-    currentDate: Date,
-    currentMonth: number,
-    currentYear: number,
-) => {
-    return currentDate.getMonth() === currentMonth && currentDate.getFullYear() === currentYear;
-};
-
-export const isDayWeekend = (currentDate: Date) => {
-    return currentDate.getDay() === 0 || currentDate.getDay() === 6;
-};
-
-export const isSameDay = (date1: Date, date2: Date) => {
-    if (!date2) return false;
-    return (
-        date1.getDate() === date2.getDate() &&
-        date1.getMonth() === date2.getMonth() &&
-        date1.getFullYear() === date2.getFullYear()
-    );
-};
-
-export const isDateValid = (inputDate: string) => {
-    return FINAL_DATE_PATTERN.test(inputDate);
-};
-
-export const getDateParts = (inputDate: string) => {
-    const values = inputDate.split('.').map((item) => parseInt(item));
-    return values;
-};
-
-export const areAllDateValuesValid = (inputDate: string) => {
-    const [day, month, year] = getDateParts(inputDate);
-
-    const tempDate = new Date(year, month - 1, day);
-
-    const isDayValid = tempDate.getDate() === day;
-    const isMonthValid = tempDate.getMonth() === month - 1;
-    const isYearValid = tempDate.getFullYear() === year;
-
-    return isDayValid && isMonthValid && isYearValid;
-};
-
-export const getMonths = () => {
-    return Object.values(MONTHS).filter((value) => typeof value === 'string') as string[];
-};
-
-export const getYears = (year: number) => {
-    const years = [];
-    for (let i = year - 10; i < year + 10; i++) {
-        years.push(i);
-    }
-    return years;
-};
-
-export const isMonthSelected = (month: string, selectedMonth: number) => {
-    return MONTHS[selectedMonth] === month;
-};
-
-export const getMonthIndex = (month: string) => {
-    return MONTHS[month as keyof typeof MONTHS];
-};
-
-export const isHolidayDate = (date: Date): boolean => {
-    return HOLIDAYS.some(
-        (holiday) =>
-            date.getDate() === holiday.date.getDate() &&
-            date.getMonth() === holiday.date.getMonth(),
-    );
-};
-
-export const getReadbleDate = (date: Date): string => {
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear().toString();
-
-    return `${day}.${month}.${year}`;
 };

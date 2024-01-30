@@ -2,7 +2,7 @@ import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react';
 import { DATE_INPUT_REGEX } from '@constants/calendar';
 import withTheme from '@hoc/withTheme';
 import { useCalendar } from '@providers/CalendarProvider';
-import { areAllDateValuesValid, getDateParts, isDateValid } from '@utils/getFullMonth';
+import { areAllDateValuesValid, getDateParts, isDateValid } from '@utils/checkDate';
 
 import DateInput from './styled';
 import { IDatePickerInputProps } from './types';

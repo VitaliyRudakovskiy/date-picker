@@ -2,11 +2,11 @@ import { ComponentType } from 'react';
 import UtilityCalendar from '@hoc/index';
 import withHolidays from '@hoc/withHolidays';
 import withSelectedDay from '@hoc/withSelectedDay';
+import withTasks from '@hoc/withTasks';
 import withWeekends from '@hoc/withWeekends';
 import { Meta, StoryObj } from '@storybook/react';
 
 import DatePicker from './index';
-import withTasks from '@hoc/withTasks';
 
 const utilutyCalendar = new UtilityCalendar();
 const DefaultCalendar = utilutyCalendar.getCalendar() as ComponentType;

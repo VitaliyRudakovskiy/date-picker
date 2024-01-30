@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react';
-import { ICalendarProps } from '@components/Calendar/types';
 import { ComponentType, useState } from 'react';
 import Button from '@components/Calendar/Button';
+import { ICalendarProps } from '@components/Calendar/types';
 import Modal from '@components/Modal';
 import { useCalendar } from '@providers/CalendarProvider';
-import { getTasksFromLocalStorage } from '@utils/tasksHelper';
 
 interface WithTasksProps extends Pick<ICalendarProps, 'isWithTasks'> {}
 
@@ -17,8 +16,6 @@ const withTasks = <T extends WithTasksProps>(WrappedComponent: ComponentType<T>)
         const handleToggleTodo = useCallback(() => {
             setIsModalOpen((prevValue) => !prevValue);
         }, []);
-
-        //const tasks = getTasksFromLocalStorage(selectedDay?.toDateString());
 
         return (
             <>

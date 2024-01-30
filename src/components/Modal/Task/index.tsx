@@ -1,14 +1,16 @@
 import React, { memo } from 'react';
-import { ITaskProps } from './types';
-import { DeleteTaskButton, TaskText, TaskWrapper } from './styled';
+import { useCalendar } from '@providers/CalendarProvider';
+import { getReadbleDate } from '@utils/calendarHelper';
 import {
     getTasksFromLocalStorage,
     removeTasksFromLocalStorage,
     saveTasksToLocalStorage,
 } from '@utils/tasksHelper';
-import { useCalendar } from '@providers/CalendarProvider';
-import { getReadbleDate } from '@utils/getFullMonth';
+
 import { ITask } from '../types';
+
+import { DeleteTaskButton, TaskText, TaskWrapper } from './styled';
+import { ITaskProps } from './types';
 
 const Task = memo(({ task, setTasks }: ITaskProps) => {
     const { id, text, isCompleted } = task;

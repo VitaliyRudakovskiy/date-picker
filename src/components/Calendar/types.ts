@@ -5,6 +5,8 @@ export interface ICalendarProps {
     isSundayFirst?: boolean;
     isDayWeekend?: (date: Date) => boolean;
     isWithTasks?: boolean;
+    minValue?: Date;
+    maxValue?: Date;
 }
 
 export interface ICalendarStyledProps {

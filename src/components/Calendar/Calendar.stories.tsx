@@ -1,13 +1,13 @@
 import React from 'react';
+import UtilityCalendar from '@hoc/index';
+import withHolidays from '@hoc/withHolidays';
+import withSelectedDay from '@hoc/withSelectedDay';
+import withTasks from '@hoc/withTasks';
+import withWeekends from '@hoc/withWeekends';
 import { Meta, StoryObj } from '@storybook/react';
-import { isDayWeekend, isHolidayDate } from '@utils/getFullMonth';
+import { isDayWeekend, isHolidayDate } from '@utils/checkDate';
 
 import Calendar from './index';
-import UtilityCalendar from '@hoc/index';
-import withTasks from '@hoc/withTasks';
-import withHolidays from '@hoc/withHolidays';
-import withWeekends from '@hoc/withWeekends';
-import withSelectedDay from '@hoc/withSelectedDay';
 
 const meta: Meta<typeof Calendar> = {
     title: 'Component/Calendar',
@@ -41,6 +41,12 @@ const meta: Meta<typeof Calendar> = {
         isWithTasks: {
             name: 'Is Adding Tasks enabled',
         },
+        minValue: {
+            name: 'Min calendar Date',
+        },
+        maxValue: {
+            name: 'Max calendar Date',
+        },
     },
 };
 
@@ -70,6 +76,14 @@ export const WithHolidays: Story = {
 export const WithSundayFirst: Story = {
     args: {
         isSundayFirst: true,
+    },
+};
+
+export const WithMinAndMaxDate: Story = {
+    args: {
+        isWithSelectedDay: true,
+        minValue: new Date(2023, 5, 1),
+        maxValue: new Date(2024, 4, 1),
     },
 };
 

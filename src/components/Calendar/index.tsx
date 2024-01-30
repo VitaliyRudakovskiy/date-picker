@@ -10,16 +10,16 @@ import MonthSlider from './MonthSlider';
 import { CalendarWrapper } from './styled';
 import { ICalendarProps } from './types';
 
-const Calendar = (props: ICalendarProps) => {
-    const {
-        isHolidayDate,
-        isWithRange,
-        isDayWeekend,
-        isWithSelectedDay,
-        isSundayFirst,
-        isWithTasks,
-    } = props;
-
+const Calendar = ({
+    isHolidayDate,
+    isWithRange,
+    isDayWeekend,
+    isWithSelectedDay,
+    isSundayFirst,
+    isWithTasks,
+    minValue,
+    maxValue,
+}: ICalendarProps) => {
     const { range, setRange } = useRange();
 
     const handlClearButtonClick = useCallback(() => {
@@ -27,9 +27,6 @@ const Calendar = (props: ICalendarProps) => {
     }, [setRange]);
 
     const isRangeExist = isWithRange && !!range?.rangeStart && !!range?.rangeEnd;
-
-    //const min = minDate ? minDate : getDefaultDates().defaultMinDate;
-    //const max = maxDate ? maxDate : getDefaultDates().defaultMaxDate;
 
     return (
         <ErrorBoundary>
@@ -43,6 +40,8 @@ const Calendar = (props: ICalendarProps) => {
                     isSundayFirst={isSundayFirst}
                     isDayWeekend={isDayWeekend}
                     isWithTasks={isWithTasks}
+                    minValue={minValue}
+                    maxValue={maxValue}
                 />
             </CalendarWrapper>
             {isRangeExist && <Button text="Clear Interval" onButtonClick={handlClearButtonClick} />}

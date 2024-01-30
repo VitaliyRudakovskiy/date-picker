@@ -5,4 +5,6 @@ export interface IDaysGridProps {
     isWithSelectedDay?: boolean;
     isSundayFirst?: boolean;
     isWithTasks?: boolean;
+    minValue?: Date;
+    maxValue?: Date;
 }

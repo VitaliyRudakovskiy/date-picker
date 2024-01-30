@@ -1,5 +1,6 @@
 import { flexBetween, flexCenter } from '@constants/style/presets';
 import styled from 'styled-components';
+
 import { ITaskStyledProps } from './types';
 
 export const TaskWrapper = styled.div`

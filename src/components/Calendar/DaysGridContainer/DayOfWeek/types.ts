@@ -7,6 +7,8 @@ export interface IDayProps {
     isWithRange?: boolean;
     isWithSelectedDay?: boolean;
     isWithTasks?: boolean;
+    minValue?: Date;
+    maxValue?: Date;
 }
 
 export interface IDayStyledProps {

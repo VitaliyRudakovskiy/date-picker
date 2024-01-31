@@ -14,14 +14,10 @@ const meta: Meta<typeof Calendar> = {
     component: Calendar,
     argTypes: {
         isWithSelectedDay: {
-            table: {
-                disable: true,
-            },
+            name: 'Is selecting date enabled',
         },
         isDayWeekend: {
-            table: {
-                disable: true,
-            },
+            name: 'Are weekends enabled',
         },
         isHolidayDate: {
             table: {
@@ -29,14 +25,10 @@ const meta: Meta<typeof Calendar> = {
             },
         },
         isSundayFirst: {
-            table: {
-                disable: true,
-            },
+            name: 'Is Sunday first',
         },
         isWithRange: {
-            table: {
-                disable: true,
-            },
+            name: 'Is with range',
         },
         isWithTasks: {
             name: 'Is Adding Tasks enabled',
@@ -95,11 +87,23 @@ export const RangePicker: Story = {
 
 const calendar = new UtilityCalendar();
 calendar.addDecorator(withTasks);
-calendar.addDecorator(withHolidays);
-calendar.addDecorator(withWeekends);
 calendar.addDecorator(withSelectedDay);
+calendar.addDecorator(withWeekends);
+calendar.addDecorator(withHolidays);
 const CalendarWithTasks = calendar.getCalendar();
 
 export const WithTodos: Story = {
     render: () => <CalendarWithTasks />,
+};
+
+export const FullFunctionalCalendar: Story = {
+    args: {
+        isWithSelectedDay: true,
+        isDayWeekend: isDayWeekend,
+        isHolidayDate: isHolidayDate,
+        isSundayFirst: true,
+        minValue: new Date(2023, 5, 1),
+        maxValue: new Date(2024, 4, 1),
+        isWithRange: true,
+    },
 };

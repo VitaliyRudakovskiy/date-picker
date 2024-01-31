@@ -7,6 +7,7 @@ export const ButtonWrapper = styled.button`
     font-size: ${({ theme }) => theme.fonts.fontSize.s};
     font-weight: ${({ theme }) => theme.fonts.fontWeight.m};
     width: 100%;
+    min-width: ${({ theme }) => theme.sizes.calendarWidth};
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.text};
     border-radius: 0 0 ${borderRadius} ${borderRadius};

@@ -1,5 +1,5 @@
 {
-    "name": "date-picker",
+    "name": "modsen-calendar-datepicker-library",
     "version": "1.0.0",
     "description": "This is date picker library for npm",
     "main": "build/index.js",
@@ -43,6 +43,7 @@
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.6",
+        "@storybook/addon-controls": "^7.6.11",
         "@storybook/addon-essentials": "7.6.8",
         "@storybook/addon-interactions": "7.6.8",
         "@storybook/addon-links": "7.6.8",

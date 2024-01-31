@@ -1,0 +1,14 @@
+import { Meta, StoryObj } from '@storybook/react';
+import Calendar from './index';
+declare const meta: Meta<typeof Calendar>;
+export default meta;
+type Story = StoryObj<typeof Calendar>;
+export declare const Primary: Story;
+export declare const WithSelectedDay: Story;
+export declare const WithWeekends: Story;
+export declare const WithHolidays: Story;
+export declare const WithSundayFirst: Story;
+export declare const WithMinAndMaxDate: Story;
+export declare const RangePicker: Story;
+export declare const WithTodos: Story;
+export declare const FullFunctionalCalendar: Story;

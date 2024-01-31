@@ -26,9 +26,9 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
         if (hasError) {
             return (
-                <ErrorBoundaryWrapper>
+                <ErrorBoundaryWrapper data-testid="error-boundary">
                     <ErrorBoundaryImage src={errorImage} alt="something wrong" />
-                    <h2>Oops! Something went wrong.</h2>
+                    <h2>Oops! Something went wrong</h2>
                     <Error>{error && error.toString()}</Error>
                 </ErrorBoundaryWrapper>
             );

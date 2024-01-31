@@ -51,6 +51,7 @@ const DayOfWeek = ({
 
     return (
         <DayOfWeekButton
+            data-testid="day-of-week"
             $isActive={isActive}
             $isWeekend={isWeekend}
             $isToday={isToday}

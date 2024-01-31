@@ -54,7 +54,7 @@ const MonthSlider = () => {
     }, []);
 
     return (
-        <MonthSliderWrapper>
+        <MonthSliderWrapper data-testid="month-slider">
             <MonthSliderIcon src={prev} alt="prevMonth" onClick={handleMonthChange('prev')} />
             <MonthNameContainer>
                 {calendarType === 'Day' ? (

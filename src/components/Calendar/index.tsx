@@ -30,7 +30,11 @@ const Calendar = ({
 
     return (
         <ErrorBoundary>
-            <CalendarWrapper $isRangeExist={isRangeExist} $isWithTasks={isWithTasks}>
+            <CalendarWrapper
+                $isRangeExist={isRangeExist}
+                $isWithTasks={isWithTasks}
+                data-testid="calendar"
+            >
                 <MonthSlider />
                 <DaysOfWeek isSundayFirst={isSundayFirst} />
                 <DaysGridContainer

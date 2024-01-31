@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import withTheme from '@hoc/withTheme';
 import { useCalendar } from '@providers/CalendarProvider';
 import { getMonthIndex } from '@utils/calendarHelper';
 
@@ -14,10 +15,14 @@ const Month = ({ month, isSelected }: IMonthProps) => {
     }, []);
 
     return (
-        <MonthContainer $isMonthSelected={isSelected} onClick={handleYearClick}>
+        <MonthContainer
+            data-testid="month-in-grid"
+            $isMonthSelected={isSelected}
+            onClick={handleYearClick}
+        >
             {month}
         </MonthContainer>
     );
 };
 
-export default Month;
+export default withTheme(Month);

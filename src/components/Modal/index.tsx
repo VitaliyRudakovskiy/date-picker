@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import withTheme from '@hoc/withTheme';
 import { useCalendar } from '@providers/CalendarProvider';
 import { getReadbleDate } from '@utils/calendarHelper';
 import { getTasksFromLocalStorage, saveTasksToLocalStorage } from '@utils/tasksHelper';
@@ -45,7 +46,7 @@ const Modal = ({ onClose }: IModalProps) => {
 
     return ReactDOM.createPortal(
         <ModalOverlay>
-            <ModalContainer>
+            <ModalContainer data-testid="modal">
                 <CloseButton onClick={onClose}>&times;</CloseButton>
                 <ModalTitle>Tasks for {taskDate}</ModalTitle>
                 <ModalInput
@@ -66,4 +67,4 @@ const Modal = ({ onClose }: IModalProps) => {
     );
 };
 
-export default Modal;
+export default withTheme(Modal);

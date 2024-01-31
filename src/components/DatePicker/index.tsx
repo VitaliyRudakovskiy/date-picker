@@ -24,14 +24,19 @@ const DatePicker = ({ CalendarView }: IDatePickerProps) => {
 
     return (
         <CalendarProvider>
-            <DatePickerWrapper>
+            <DatePickerWrapper data-testid="date-picker">
                 <DateLabelContainer>
                     <p>Date</p>
                     {invalidInputError && <ErrorText>{invalidInputError}</ErrorText>}
                 </DateLabelContainer>
 
                 <DatePickerHeader>
-                    <Icon src={calendar} alt="Toggle calendar" onClick={handleCalendarIconClick} />
+                    <Icon
+                        src={calendar}
+                        alt="Toggle calendar"
+                        onClick={handleCalendarIconClick}
+                        data-testid="calendar-icon-button"
+                    />
                     <DatePickerInput
                         inputText={inputText}
                         setInputText={setInputText}

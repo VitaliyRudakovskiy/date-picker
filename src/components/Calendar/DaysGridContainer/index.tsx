@@ -40,7 +40,7 @@ const DaysGridContainer = ({
     return (
         <>
             {CALENDAR_DAYS && (
-                <DaysGridWrapper>
+                <DaysGridWrapper data-testid="data-grid-container">
                     {CALENDAR_DAYS.map((day) => (
                         <DayOfWeek
                             key={day.getTime()}

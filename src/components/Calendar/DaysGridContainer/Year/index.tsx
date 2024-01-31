@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import withTheme from '@hoc/withTheme';
 import { useCalendar } from '@providers/CalendarProvider';
 
 import { YearContainer } from './styled';
@@ -13,10 +14,14 @@ const Year = ({ year, isSelected }: IYearProps) => {
     }, []);
 
     return (
-        <YearContainer $isYearSelected={isSelected} onClick={handleYearClick}>
+        <YearContainer
+            data-testid="year-in-grid"
+            $isYearSelected={isSelected}
+            onClick={handleYearClick}
+        >
             {year}
         </YearContainer>
     );
 };
 
-export default Year;
+export default withTheme(Year);

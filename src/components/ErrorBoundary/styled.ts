@@ -30,7 +30,3 @@ export const ErrorInfoText = styled.span`
         font-size: ${textS}px;
     }
 `;
-
-export const ErrorBoundaryImage = styled.img`
-    width: 100px;
-`;

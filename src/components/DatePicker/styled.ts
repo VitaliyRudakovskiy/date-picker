@@ -7,6 +7,10 @@ export const DatePickerWrapper = styled.section`
     display: flex;
     flex-direction: column;
     max-width: ${({ theme }) => theme.sizes.calendarWidth};
+
+    & svg:hover {
+        cursor: pointer;
+    }
 `;
 
 export const DatePickerHeader = styled.div`

@@ -17,13 +17,6 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export const Icon = styled.img`
-    width: 16px;
-    height: 16px;
-    color: ${COLORS.disabledDay};
-    cursor: pointer;
-`;
-
 export const CalendarItem = styled.div`
     font-size: ${FONTS.fontSize.s}px;
     font-weight: ${FONTS.fontWeight.m};

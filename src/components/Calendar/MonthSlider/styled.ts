@@ -5,11 +5,10 @@ export const MonthSliderWrapper = styled.div`
     width: 100%;
     ${flexBetween};
     padding: ${({ theme }) => theme.gaps.m} 0;
-`;
 
-export const MonthSliderIcon = styled.img`
-    color: ${({ theme }) => theme.colors.month};
-    cursor: pointer;
+    & svg:hover {
+        cursor: pointer;
+    }
 `;
 
 export const MonthNameContainer = styled.h3`

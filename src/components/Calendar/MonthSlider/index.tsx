@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import next from '@assets/next.svg';
-import prev from '@assets/prev.svg';
+import Next from '@assets/icons/Next';
+import Prev from '@assets/icons/Prev';
 import { MONTHS } from '@constants/calendar';
 import { useCalendar } from '@providers/CalendarProvider';
 
-import { MonthName, MonthNameContainer, MonthSliderIcon, MonthSliderWrapper, Year } from './styled';
+import { MonthName, MonthNameContainer, MonthSliderWrapper, Year } from './styled';
 
 const MonthSlider = () => {
     const {
@@ -55,7 +55,7 @@ const MonthSlider = () => {
 
     return (
         <MonthSliderWrapper data-testid="month-slider">
-            <MonthSliderIcon src={prev} alt="prevMonth" onClick={handleMonthChange('prev')} />
+            <Prev onClick={handleMonthChange('prev')} />
             <MonthNameContainer>
                 {calendarType === 'Day' ? (
                     <>
@@ -70,7 +70,7 @@ const MonthSlider = () => {
                     </MonthName>
                 )}
             </MonthNameContainer>
-            <MonthSliderIcon src={next} alt="nextMonth" onClick={handleMonthChange('next')} />
+            <Next onClick={handleMonthChange('next')} />
         </MonthSliderWrapper>
     );
 };

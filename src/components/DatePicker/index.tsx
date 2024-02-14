@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import calendar from '@assets/calendar.svg';
-import clear from '@assets/clear.svg';
-import { Icon } from '@constants/style/globalStyles';
+import Calendar from '@assets/icons/Calendar';
+import Clear from '@assets/icons/Clear';
 import withTheme from '@hoc/withTheme';
 import CalendarProvider from '@providers/CalendarProvider';
 
@@ -31,9 +30,7 @@ const DatePicker = ({ CalendarView }: IDatePickerProps) => {
                 </DateLabelContainer>
 
                 <DatePickerHeader>
-                    <Icon
-                        src={calendar}
-                        alt="Toggle calendar"
+                    <Calendar
                         onClick={handleCalendarIconClick}
                         data-testid="calendar-icon-button"
                     />
@@ -43,7 +40,7 @@ const DatePicker = ({ CalendarView }: IDatePickerProps) => {
                         setIsCalendarOpen={setIsCalendarOpen}
                         setInvalidInputError={setInvalidInputError}
                     />
-                    <Icon src={clear} alt="Clear text" onClick={handleClearIconClick} />
+                    <Clear onClick={handleClearIconClick} />
                 </DatePickerHeader>
 
                 {isCalendarOpen && <CalendarView />}

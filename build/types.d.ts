@@ -8,5 +8,4 @@ export interface ITask {
     text: string;
     isCompleted: boolean;
 }
-export interface DispatchDate extends Dispatch<SetStateAction<Date>> {
-}
+export interface DispatchDate extends Dispatch<SetStateAction<Date>> {}

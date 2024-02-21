@@ -1,5 +1,6 @@
-import { flexCenter } from '@constants/style/presets';
 import styled, { DefaultTheme } from 'styled-components';
+
+import { flexCenter } from '@/theme/style/presets';
 
 const gapS = ({ theme }: DefaultTheme) => theme.gaps.s;
 

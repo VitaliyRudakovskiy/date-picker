@@ -1,8 +1,11 @@
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react';
-import { DATE_INPUT_REGEX } from '@constants/calendar';
-import withTheme from '@hoc/withTheme';
-import { useCalendar } from '@providers/CalendarProvider';
-import { areAllDateValuesValid, getDateParts, isDateValid } from '@utils/checkDate';
+
+import { DATE_INPUT_REGEX } from '@/constants/calendar';
+import useCalendar from '@/context/useCalendar';
+import getDateParts from '@/helpers/getDateParts';
+import areAllDateValuesValid from '@/helpers/validators/areAllDateValuesValid';
+import isDateValid from '@/helpers/validators/isDateValid';
+import withTheme from '@/hoc/withTheme';
 
 import DateInput from './styled';
 import { IDatePickerInputProps } from './types';

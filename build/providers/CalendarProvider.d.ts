@@ -1,5 +1,4 @@
 import React from 'react';
-import { ICalendarContext, IProviderProps } from './types';
-export declare const useCalendar: () => ICalendarContext;
+import { IProviderProps } from './types';
 declare const CalendarProvider: ({ children }: IProviderProps) => React.JSX.Element;
 export default CalendarProvider;

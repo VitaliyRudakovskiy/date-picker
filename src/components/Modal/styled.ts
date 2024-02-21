@@ -1,5 +1,6 @@
-import { flexCenter } from '@constants/style/presets';
 import styled from 'styled-components';
+
+import { flexCenter } from '@/theme/style/presets';
 
 export const ModalOverlay = styled.div`
     ${flexCenter};

@@ -1,5 +1,6 @@
-import { CalendarItem } from '@constants/style/globalStyles';
 import styled, { DefaultTheme } from 'styled-components';
+
+import { CalendarItem } from '@/theme/style/globalStyles';
 
 import { IMonthStyledProps } from './types';
 

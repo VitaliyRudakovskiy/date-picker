@@ -1,24 +1,11 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { useState } from 'react';
 
-import { DispatchDate, ICalendarContext, IProviderProps } from './types';
+import CalendarContext from '@/context/CalendarContext';
+import { DispatchDate } from '@/types';
+
+import { IProviderProps } from './types';
 
 const now = new Date();
-
-const CalendarContext = createContext<ICalendarContext>({
-    today: now,
-    selectedDay: undefined,
-    selectedMonth: now.getMonth(),
-    selectedYear: now.getFullYear(),
-    calendarType: 'Day',
-    setSelectedDay: () => undefined,
-    setSelectedMonth: () => undefined,
-    setSelectedYear: () => undefined,
-    setCalendarType: () => undefined,
-});
-
-export const useCalendar = () => {
-    return useContext(CalendarContext);
-};
 
 const CalendarProvider = ({ children }: IProviderProps) => {
     const [today] = useState<Date>(now);

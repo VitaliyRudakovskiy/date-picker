@@ -1,6 +1,6 @@
-import React from 'react';
-import { ComponentType } from 'react';
-import { ICalendarProps } from '@components/Calendar/types';
+import React, { ComponentType } from 'react';
+
+import { ICalendarProps } from '@/components/Calendar/types';
 
 interface WithSundayFirstProps extends Pick<ICalendarProps, 'isSundayFirst'> {}
 

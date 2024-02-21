@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ICalendarProps } from '@components/Calendar/types';
+import { ICalendarProps } from '@/components/Calendar/types';
 declare class UtilityCalendar {
     private calendar;
     constructor();

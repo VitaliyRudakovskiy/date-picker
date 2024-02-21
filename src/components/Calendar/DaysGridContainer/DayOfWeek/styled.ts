@@ -1,5 +1,6 @@
-import { calculateBackgroundColor, calculateTextColor } from '@utils/calculateStyles';
 import styled from 'styled-components';
+
+import { calculateBackgroundColor, calculateTextColor } from '@/helpers/calculateStyles';
 
 import { IDayStyledProps } from './types';
 

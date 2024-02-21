@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import { IProviderProps, IRange, IRangeContext } from './types';
+import { IRange } from '@/types';
+
+import { IProviderProps, IRangeContext } from './types';
 
 const RangeContext = createContext<IRangeContext>({
     range: undefined,

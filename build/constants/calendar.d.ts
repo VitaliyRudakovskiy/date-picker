@@ -1,4 +1,4 @@
-import { ICodes } from './types';
+import { ICodes } from '@/theme/types';
 export declare const WEEK_LENGTH = 7;
 export declare const MONTHS_LENGTH = 12;
 export declare const DATE_INPUT_REGEX: RegExp;

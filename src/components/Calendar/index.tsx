@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import ErrorBoundary from '@components/ErrorBoundary';
-import withTheme from '@hoc/withTheme';
-import { useRange } from '@providers/RangeProvider';
+
+import ErrorBoundary from '@/components/ErrorBoundary';
+import withTheme from '@/hoc/withTheme';
+import { useRange } from '@/providers/RangeProvider';
 
 import Button from './Button';
 import DaysGridContainer from './DaysGridContainer';

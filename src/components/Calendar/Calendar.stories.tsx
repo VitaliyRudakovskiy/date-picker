@@ -1,11 +1,13 @@
 import React from 'react';
-import UtilityCalendar from '@hoc/index';
-import withHolidays from '@hoc/withHolidays';
-import withSelectedDay from '@hoc/withSelectedDay';
-import withTasks from '@hoc/withTasks';
-import withWeekends from '@hoc/withWeekends';
 import { Meta, StoryObj } from '@storybook/react';
-import { isDayWeekend, isHolidayDate } from '@utils/checkDate';
+
+import isDayWeekend from '@/helpers/validators/isDayWeekend';
+import isHolidayDate from '@/helpers/validators/isHolidayDate';
+import UtilityCalendar from '@/hoc/index';
+import withHolidays from '@/hoc/withHolidays';
+import withSelectedDay from '@/hoc/withSelectedDay';
+import withTasks from '@/hoc/withTasks';
+import withWeekends from '@/hoc/withWeekends';
 
 import Calendar from './index';
 

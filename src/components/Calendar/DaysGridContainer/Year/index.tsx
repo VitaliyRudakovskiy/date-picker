@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
-import withTheme from '@hoc/withTheme';
-import { useCalendar } from '@providers/CalendarProvider';
+
+import useCalendar from '@/context/useCalendar';
+import withTheme from '@/hoc/withTheme';
 
 import { YearContainer } from './styled';
 import { IYearProps } from './types';

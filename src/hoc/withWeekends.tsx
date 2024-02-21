@@ -1,7 +1,7 @@
-import React from 'react';
-import { ComponentType } from 'react';
-import { ICalendarProps } from '@components/Calendar/types';
-import { isDayWeekend } from '@utils/checkDate';
+import React, { ComponentType } from 'react';
+
+import { ICalendarProps } from '@/components/Calendar/types';
+import isDayWeekend from '@/helpers/validators/isDayWeekend';
 
 interface WithWeekendsProps extends Pick<ICalendarProps, 'isDayWeekend'> {}
 

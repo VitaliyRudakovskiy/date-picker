@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { isDayWeekend, isHolidayDate } from '@utils/checkDate';
+
+import isDayWeekend from '@/helpers/validators/isDayWeekend';
+import isHolidayDate from '@/helpers/validators/isHolidayDate';
 
 import DaysGridContainer from './index';
 

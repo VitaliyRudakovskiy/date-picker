@@ -1,6 +1,5 @@
-import React from 'react';
-import { ComponentType } from 'react';
-import { ICalendarProps } from '@components/Calendar/types';
+import React, { ComponentType } from 'react';
+import { ICalendarProps } from '@/components/Calendar/types';
 interface WithHolidaysProps extends Pick<ICalendarProps, 'isHolidayDate'> {
 }
 declare const withHolidays: <T extends WithHolidaysProps>(WrappedComponent: React.ComponentType<T>) => {

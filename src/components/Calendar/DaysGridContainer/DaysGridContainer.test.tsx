@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { getFullMonth } from '@utils/getFullMonth';
+
+import getFullMonth from '@/helpers/getFullMonth';
 
 import '@testing-library/jest-dom';
 

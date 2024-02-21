@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import withTheme from '@hoc/withTheme';
-import { useCalendar } from '@providers/CalendarProvider';
-import { getMonthIndex } from '@utils/calendarHelper';
+
+import useCalendar from '@/context/useCalendar';
+import { getMonthIndex } from '@/helpers/getMonths';
+import withTheme from '@/hoc/withTheme';
 
 import { MonthContainer } from './styled';
 import { IMonthProps } from './types';

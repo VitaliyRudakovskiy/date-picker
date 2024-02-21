@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
-import { useCalendar } from '@providers/CalendarProvider';
-import { getReadbleDate } from '@utils/calendarHelper';
+
+import useCalendar from '@/context/useCalendar';
 import {
     getTasksFromLocalStorage,
     removeTasksFromLocalStorage,
     saveTasksToLocalStorage,
-} from '@utils/tasksHelper';
-
-import { ITask } from '../types';
+} from '@/helpers/getLocalTasks';
+import getReadbleDate from '@/helpers/getReadableDate';
+import { ITask } from '@/types';
 
 import { DeleteTaskButton, TaskText, TaskWrapper } from './styled';
 import { ITaskProps } from './types';

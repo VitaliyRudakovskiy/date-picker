@@ -1,5 +1,6 @@
-import { flexBetween } from '@constants/style/presets';
 import styled from 'styled-components';
+
+import { flexBetween } from '@/theme/style/presets';
 
 export const MonthSliderWrapper = styled.div`
     width: 100%;
@@ -29,4 +30,9 @@ export const Year = styled.span`
     &:hover {
         color: ${({ theme }) => theme.colors.chosenDay};
     }
+`;
+
+export const MonthSliderIcon = styled.img`
+    color: ${({ theme }) => theme.colors.month};
+    cursor: pointer;
 `;

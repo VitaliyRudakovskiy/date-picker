@@ -1,5 +1,6 @@
-import { flexBetween, flexCenter } from '@constants/style/presets';
 import styled from 'styled-components';
+
+import { flexBetween, flexCenter } from '@/theme/style/presets';
 
 import { ITaskStyledProps } from './types';
 

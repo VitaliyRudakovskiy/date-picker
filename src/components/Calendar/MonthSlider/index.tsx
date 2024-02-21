@@ -1,10 +1,13 @@
 import React, { useCallback } from 'react';
-import Next from '@assets/icons/Next';
-import Prev from '@assets/icons/Prev';
-import { MONTHS } from '@constants/calendar';
-import { useCalendar } from '@providers/CalendarProvider';
 
-import { MonthName, MonthNameContainer, MonthSliderWrapper, Year } from './styled';
+import next from '@/assets/next.svg';
+import prev from '@/assets/prev.svg';
+import { MONTHS } from '@/constants/calendar';
+import useCalendar from '@/context/useCalendar';
+import changeMonth from '@/helpers/changeMonth';
+import changeYear from '@/helpers/changeYear';
+
+import { MonthName, MonthNameContainer, MonthSliderIcon, MonthSliderWrapper, Year } from './styled';
 
 const MonthSlider = () => {
     const {
@@ -16,61 +19,61 @@ const MonthSlider = () => {
         setCalendarType,
     } = useCalendar();
 
-    const handleMonthChange = useCallback(
+    const handleSliderChange = useCallback(
         (to: 'next' | 'prev') => () => {
             if (calendarType === 'Day') {
-                let newYear = selectedYear;
-                if (to === 'next') {
-                    const newMonth = (selectedMonth + 1) % 12;
-                    if (newMonth < selectedMonth) {
-                        newYear++;
-                        setSelectedYear(newYear);
-                    }
-                    setSelectedMonth(newMonth);
-                } else {
-                    const newMonth = (selectedMonth + 11) % 12;
-                    if (newMonth > selectedMonth) {
-                        newYear--;
-                        setSelectedYear(newYear);
-                    }
-                    setSelectedMonth(newMonth);
-                }
+                changeMonth(
+                    to,
+                    selectedMonth,
+                    selectedYear,
+                    setSelectedMonth,
+                    setSelectedYear,
+                    calendarType,
+                );
             }
             if (calendarType === 'Year') {
-                if (to === 'next') setSelectedYear(selectedYear + 20);
-                else setSelectedYear(selectedYear - 20);
+                changeYear(to, selectedYear, setSelectedYear);
             }
         },
-
-        [calendarType, selectedMonth, selectedYear],
+        [selectedMonth, selectedYear, setSelectedMonth, setSelectedYear, calendarType],
     );
 
-    const handleMonthClick = useCallback(() => {
-        setCalendarType('Month');
-    }, []);
+    const handleCalendarTypeChange = useCallback(
+        (type: 'Month' | 'Year') => () => {
+            setCalendarType(type);
+        },
+        [setCalendarType],
+    );
 
-    const handleYearClick = useCallback(() => {
-        setCalendarType('Year');
-    }, []);
+    const renderMonthYearHeader = () => {
+        switch (calendarType) {
+            case 'Day':
+                return (
+                    <>
+                        <MonthName onClick={handleCalendarTypeChange('Month')}>
+                            {MONTHS[selectedMonth]}{' '}
+                        </MonthName>
+                        <Year onClick={handleCalendarTypeChange('Year')}>{selectedYear}</Year>
+                    </>
+                );
+            case 'Month':
+                return <MonthName onClick={handleCalendarTypeChange('Month')}>Months</MonthName>;
+            case 'Year':
+                return (
+                    <MonthName onClick={handleCalendarTypeChange('Year')}>
+                        {selectedYear - 10} - {selectedYear + 9}
+                    </MonthName>
+                );
+            default:
+                return null;
+        }
+    };
 
     return (
         <MonthSliderWrapper data-testid="month-slider">
-            <Prev onClick={handleMonthChange('prev')} />
-            <MonthNameContainer>
-                {calendarType === 'Day' ? (
-                    <>
-                        <MonthName onClick={handleMonthClick}>{MONTHS[selectedMonth]} </MonthName>
-                        <Year onClick={handleYearClick}>{selectedYear}</Year>
-                    </>
-                ) : calendarType === 'Month' ? (
-                    <MonthName>Months</MonthName>
-                ) : (
-                    <MonthName>
-                        {selectedYear - 10} - {selectedYear + 9}
-                    </MonthName>
-                )}
-            </MonthNameContainer>
-            <Next onClick={handleMonthChange('next')} />
+            <MonthSliderIcon src={prev} alt="prevMonth" onClick={handleSliderChange('prev')} />
+            <MonthNameContainer>{renderMonthYearHeader()}</MonthNameContainer>
+            <MonthSliderIcon src={next} alt="nextMonth" onClick={handleSliderChange('next')} />
         </MonthSliderWrapper>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { getReadbleDate } from '@utils/calendarHelper';
+
+import getReadbleDate from '@/helpers/getReadableDate';
 
 import '@testing-library/jest-dom';
 

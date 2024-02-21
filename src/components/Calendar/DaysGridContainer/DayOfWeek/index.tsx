@@ -1,12 +1,15 @@
 import React, { useCallback } from 'react';
-import { ITask } from '@components/Modal/types';
-import withTheme from '@hoc/withTheme';
-import { useCalendar } from '@providers/CalendarProvider';
-import { useRange } from '@providers/RangeProvider';
-import { getReadbleDate } from '@utils/calendarHelper';
-import { isSameDay } from '@utils/checkDate';
-import { getRangeState, isDateBetweenMinAndMax, setRangeValues } from '@utils/rangeValues';
-import { getTasksFromLocalStorage } from '@utils/tasksHelper';
+
+import useCalendar from '@/context/useCalendar';
+import { getTasksFromLocalStorage } from '@/helpers/getLocalTasks';
+import getRangeState from '@/helpers/getRangeState';
+import getReadbleDate from '@/helpers/getReadableDate';
+import setRangeValues from '@/helpers/setRangeValues';
+import isDateBetweenMinAndMax from '@/helpers/validators/isDateBetweenMinAndMax';
+import isSameDay from '@/helpers/validators/isSameDay';
+import withTheme from '@/hoc/withTheme';
+import { useRange } from '@/providers/RangeProvider';
+import { ITask } from '@/types';
 
 import { DayOfWeekButton, TasksMark } from './styled';
 import { IDayProps } from './types';

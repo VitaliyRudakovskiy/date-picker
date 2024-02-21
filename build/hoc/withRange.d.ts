@@ -1,6 +1,5 @@
-import React from 'react';
-import { ComponentType } from 'react';
-import { ICalendarProps } from '@components/Calendar/types';
+import React, { ComponentType } from 'react';
+import { ICalendarProps } from '@/components/Calendar/types';
 interface WithRangeProps extends Pick<ICalendarProps, 'isWithRange'> {
 }
 declare const withRange: <T extends WithRangeProps>(WrappedComponent: React.ComponentType<T>) => {

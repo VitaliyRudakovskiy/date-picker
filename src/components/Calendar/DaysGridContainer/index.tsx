@@ -1,8 +1,12 @@
 import React, { useMemo } from 'react';
-import { useCalendar } from '@providers/CalendarProvider';
-import { getMonths, getYears } from '@utils/calendarHelper';
-import { isDayInCurrentMonth, isMonthSelected, isSameDay } from '@utils/checkDate';
-import { getFullMonth } from '@utils/getFullMonth';
+
+import useCalendar from '@/context/useCalendar';
+import getFullMonth from '@/helpers/getFullMonth';
+import { getMonths } from '@/helpers/getMonths';
+import getYears from '@/helpers/getYears';
+import isDayInCurrentMonth from '@/helpers/validators/isDayInCurrentMonth';
+import isMonthSelected from '@/helpers/validators/isMonthSelected';
+import isSameDay from '@/helpers/validators/isSameDay';
 
 import DayOfWeek from './DayOfWeek';
 import Month from './Month';

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import withTheme from '@hoc/withTheme';
+
+import withTheme from '@/hoc/withTheme';
 
 import { Error, ErrorBoundaryWrapper } from './styled';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';

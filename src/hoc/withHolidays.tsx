@@ -1,7 +1,7 @@
-import React from 'react';
-import { ComponentType } from 'react';
-import { ICalendarProps } from '@components/Calendar/types';
-import { isHolidayDate } from '@utils/checkDate';
+import React, { ComponentType } from 'react';
+
+import { ICalendarProps } from '@/components/Calendar/types';
+import isHolidayDate from '@/helpers/validators/isHolidayDate';
 
 interface WithHolidaysProps extends Pick<ICalendarProps, 'isHolidayDate'> {}
 

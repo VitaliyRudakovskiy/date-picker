@@ -1,9 +1,12 @@
-import React, { useCallback } from 'react';
-import { ComponentType, useState } from 'react';
-import Button from '@components/Calendar/Button';
-import { ICalendarProps } from '@components/Calendar/types';
-import Modal from '@components/Modal';
-import { useCalendar } from '@providers/CalendarProvider';
+import React, { ComponentType, useCallback, useState } from 'react';
+
+import Button from '@/components/Calendar/Button';
+import { ICalendarProps } from '@/components/Calendar/types';
+import Modal from '@/components/Modal';
+import useCalendar from '@/context/useCalendar';
+import { getTasksFromLocalStorage } from '@/helpers/getLocalTasks';
+import getReadbleDate from '@/helpers/getReadableDate';
+import { ITask } from '@/types';
 
 interface WithTasksProps extends Pick<ICalendarProps, 'isWithTasks'> {}
 
@@ -17,10 +20,18 @@ const withTasks = <T extends WithTasksProps>(WrappedComponent: ComponentType<T>)
             setIsModalOpen((prevValue) => !prevValue);
         }, []);
 
+        const tasks = getTasksFromLocalStorage<ITask[]>(getReadbleDate(selectedDay));
+        const isTaskExist = tasks.length !== 0;
+
         return (
             <>
                 <WrappedComponent {...(props as T)} isWithTasks={true} />
-                {selectedDay && <Button text="Add task" onButtonClick={handleToggleTodo} />}
+                {selectedDay && (
+                    <Button
+                        text={isTaskExist ? 'View Tasks' : 'Add task'}
+                        onButtonClick={handleToggleTodo}
+                    />
+                )}
                 {isModalOpen && <Modal onClose={handleToggleTodo} />}
             </>
         );

@@ -18,12 +18,7 @@
         "typeRoots": ["./node_modules/@types"],
         "baseUrl": "./src",
         "paths": {
-            "@assets/*": ["assets/*"],
-            "@components/*": ["components/*"],
-            "@constants/*": ["constants/*"],
-            "@hoc/*": ["hoc/*"],
-            "@providers/*": ["providers/*"],
-            "@utils/*": ["utils/*"],
+            "@/*": ["*"],
         },
     },
     "include": ["src/**/*", "index.d.ts"],

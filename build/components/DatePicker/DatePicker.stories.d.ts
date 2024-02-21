@@ -5,3 +5,4 @@ export default meta;
 type Story = StoryObj<typeof DatePicker>;
 export declare const Default: Story;
 export declare const Fullfilled: Story;
+export declare const RangePicker: Story;

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ITask } from '../types';
+import { ITask } from '@/types';
 export interface ITaskProps {
     task: ITask;
     setTasks: Dispatch<SetStateAction<ITask[]>>;
